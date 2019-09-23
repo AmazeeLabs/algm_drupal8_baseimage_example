@@ -1,0 +1,9 @@
+FROM algmprivsecops/drupal8 
+
+COPY composer.json /app/
+#RUN composer update
+#RUN composer install --no-dev
+COPY . /app
+
+# Define where the Drupal Root is located
+ENV WEBROOT=web
