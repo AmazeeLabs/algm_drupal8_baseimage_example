@@ -1,5 +1,5 @@
 {
-    "name": "amazeeio/drupal-example-multisite1",
+    "name": "amazeelabs/algm_drupal8_baseimage_example",
     "description": "Example of Drupal-Example as Multisite",
     "type": "project",
     "license": "GPL-2.0+",
@@ -13,11 +13,7 @@
         {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
-        },
-    	{
-		"type": "git",
-		"url": "https://github.com/AmazeeLabs/algm_drupal8_baseimage.git"
-	}
+        }
     ],
     "autoload": {
         "classmap": [
@@ -25,7 +21,7 @@
         ]
     },
     "require": {
-      "amazeelabs/algm_drupal8_baseimage": "dev-master@dev"
+        "wikimedia/composer-merge-plugin": "^1.4"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
@@ -45,6 +41,18 @@
         ]
     },
     "extra": {
+        "merge-plugin": {
+            "include": [
+                "composer.base.json"
+            ],
+            "recurse": false,
+            "replace": true,
+            "ignore-duplicates": false,
+            "merge-dev": false,
+            "merge-extra": false,
+            "merge-extra-deep": false,
+            "merge-scripts": false
+        },
         "installer-paths": {
             "web/core": ["type:drupal-core"],
             "web/libraries/{$name}": ["type:drupal-library"],
