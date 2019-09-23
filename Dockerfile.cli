@@ -1,8 +1,7 @@
 FROM algmprivsecops/drupal8 
 
-COPY composer.json /app/
-#RUN composer update
-#RUN composer install --no-dev
+COPY composer.json /app/composer.dist.json
+RUN composer update --lock
 COPY . /app
 
 # Define where the Drupal Root is located
