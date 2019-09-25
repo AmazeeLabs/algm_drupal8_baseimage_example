@@ -9,8 +9,8 @@ x-volumes:
     # Define all volumes you would like to have real-time mounted into the docker containers
     volumes:
       - ${PWD}/:/app/depimages/local/
-      - ${PWD}/web/modules/custom:/app/web/modules/custom/:delegated
-      - ${PWD}/web/themes/:/app/web/themes/:delegated
+      - ${PWD}/modules:/app/web/modules/custom/:delegated
+      - ${PWD}/themes/:/app/web/themes/custom:delegated
 
 x-environment:
   &default-environment
