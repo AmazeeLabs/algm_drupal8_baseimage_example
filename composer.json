@@ -1,6 +1,6 @@
 {
     "name": "amazeelabs/algm_drupal8_baseimage_example",
-    "description": "Example of Drupal-Example as Multisite",
+    "description": "Example of Drupal-Example as Multisite with minimal fuss",
     "type": "project",
     "license": "GPL-2.0+",
     "authors": [
@@ -21,7 +21,8 @@
         ]
     },
     "require": {
-        "wikimedia/composer-merge-plugin": "^1.4"
+        "wikimedia/composer-merge-plugin": "^1.4",
+        "drupal/lagoon_logs": "^1.0"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
