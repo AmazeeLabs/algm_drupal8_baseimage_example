@@ -19,7 +19,7 @@ pipeline {
     }
     stage ('Build image') {
       steps {
-        sh "docker-compose build --no-cache"
+        #sh "docker-compose build --no-cache"
       }
     }
     stage('Test') {
@@ -29,7 +29,17 @@ pipeline {
     }
     stage('Lagoon Deployment') {
       steps {
-        sh "ssh -p 32222 -o LogLevel=ERROR -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -t lagoon@ssh.lagoon.amazeeio.cloud token 2>&1"
+        #sh "ssh -p 32222 -o LogLevel=ERROR -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -t lagoon@ssh.lagoon.amazeeio.cloud token 2>&1"
+        sh "curl -i -H 'Content-Type: application/json' -H "Authorization: bearer ${JWTTOKEN}" -X POST -d '{"query": "mutation {
+            deployEnvironmentLatest(input: {
+              environment: {
+                name: "master"
+                project: {
+                  name: "umami-demo"
+                }
+              }
+            })
+          }"}' ${GRAPHQLEndpoint}
       }
     }
   }
