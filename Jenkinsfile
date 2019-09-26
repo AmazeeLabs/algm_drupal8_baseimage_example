@@ -27,9 +27,9 @@ pipeline {
         echo 'Testing'
       }
     }
-    stage('Deploy') {
+    stage('Lagoon Deployment') {
       steps {
-        echo 'Deploying'
+        sh "ssh -p 32222 -o LogLevel=ERROR -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -t lagoon@ssh.lagoon.amazeeio.cloud token 2>&1"
       }
     }
   }
