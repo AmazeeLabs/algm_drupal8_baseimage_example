@@ -5,7 +5,7 @@ pipeline {
     JWTSSHHost = 'ssh.lagoon.amazeeio.cloud'
     GRAPHQLEndpoint = 'https://api.lagoon.amazeeio.cloud/graphql'
     JWTTOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIxNCwiaXNzIjoiYXV0aC5hbWF6ZWUuaW8iLCJyb2xlIjoibm9uZSIsImF1ZCI6ImFwaS5kZXYiLCJpYXQiOjE1Njk0OTMxMjl9.l4BKbqFD6YuEWHCjVVSp31su-CDuCsclL4iOUitda20'
-    QUERY = '{"query": "mutation { deployEnvironmentLatest(input: { environment: { name: \"master\" project: { name: \"umami-demo\" } } }) }"}'
+    QUERY = '{"query": "mutation { deployEnvironmentLatest(input: { environment: { name: \\"master\\" project: { name: \\"umami-demo\\" } } }) }"}'
   }
 
   options {
