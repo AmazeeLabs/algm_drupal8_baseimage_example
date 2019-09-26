@@ -1,8 +1,8 @@
 pipeline {
  agent any
  environment {
-   JWTSSHPort = 32222,
-   JWTSSHHost = 'ssh.lagoon.amazeeio.cloud',
+   JWTSSHPort = 32222
+   JWTSSHHost = 'ssh.lagoon.amazeeio.cloud'
    GRAPHQLEndpoint = 'https://api.lagoon.amazeeio.cloud/graphql'
  }
  options {
