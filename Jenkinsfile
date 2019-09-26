@@ -5,17 +5,15 @@ pipeline {
     JWTSSHHost = 'ssh.lagoon.amazeeio.cloud'
     GRAPHQLEndpoint = 'https://api.lagoon.amazeeio.cloud/graphql'
   }
+
   options {
     buildDiscarder(logRotator(numToKeepStr: '10'))
   }
+
   stages {
     stage ('build image') {
       steps {
-        try {
-          sh "docker-compose build --no-cache"
-        } catch (e) {
-          error(e, 'build image')
-        }
+        sh "docker-compose build --no-cache"
       }
     }
   }
