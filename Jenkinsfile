@@ -35,7 +35,7 @@ pipeline {
           curl \
             -H "Content-Type:application/json" -H \
             -X POST \
-            "Authorization: Bearer ${JWTTOKEN}" \
+            -H "Authorization: Bearer ${JWTTOKEN}" \
             --data '{ "query": "mutation { deployEnvironmentLatest(input: { environment: { name: "master" project: { name: "umami-demo" } } }) }"}' \
             ${GRAPHQLEndpoint}
         """
