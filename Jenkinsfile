@@ -13,7 +13,9 @@ pipeline {
 
   stages {
     stage ('Build Info') {
-      sh 'env | sort'
+      steps {
+        sh 'env | sort'
+      }
     }
     stage ('Build image') {
       steps {
