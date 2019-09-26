@@ -11,9 +11,22 @@ pipeline {
   }
 
   stages {
-    stage ('build image') {
+    stage ('Build Info') {
+      sh 'env | sort'
+    }
+    stage ('Build image') {
       steps {
         sh "docker-compose build --no-cache"
+      }
+    }
+    stage('Test') {
+      steps {
+        echo 'Testing'
+      }
+    }
+    stage('Deploy') {
+      steps {
+        echo 'Deploying'
       }
     }
   }
