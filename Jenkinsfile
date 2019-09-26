@@ -33,7 +33,7 @@ pipeline {
         // sh "ssh -p 32222 -o LogLevel=ERROR -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -t lagoon@ssh.lagoon.amazeeio.cloud token 2>&1"
         sh """
           curl \
-            -H 'Content-Type: application/json' -H \
+            -H 'Content-Type:application/json' -H \
             -X POST \
             "Authorization: Bearer ${JWTTOKEN}" \
             --data '{ "query": "mutation { deployEnvironmentLatest(input: { environment: { name: "master" project: { name: "umami-demo" } } }) }"}' \
