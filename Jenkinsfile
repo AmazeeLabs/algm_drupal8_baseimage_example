@@ -36,7 +36,7 @@ pipeline {
               -X POST \
               ${env.GRAPHQLEndpoint} \
               -H 'Content-Type: application/json' \
-              -H "Authorization: Bearer ${token}" \
+              -H "Authorization: Bearer ${JWTTOKEN}" \
               -d @-
           """
         }
