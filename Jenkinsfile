@@ -32,9 +32,9 @@ pipeline {
       steps {
         withCredentials([string(credentialsId: 'JWTTOKEN', token: 'JWTTOKEN')]) {
           sh """
-            echo ${QUERY} | curl \
+            echo ${env.QUERY} | curl \
               -X POST \
-              ${GRAPHQLEndpoint} \
+              ${env.GRAPHQLEndpoint} \
               -H 'Content-Type: application/json' \
               -H "Authorization: Bearer ${token}" \
               -d @-
