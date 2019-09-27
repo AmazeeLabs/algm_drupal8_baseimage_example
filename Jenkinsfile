@@ -34,7 +34,7 @@ pipeline {
           sh """
             curl \
               -X POST \
-              -H "Content-Type:application/json" \
+              -H 'Content-Type:application/json' \
               -H "Authorization: Bearer ${JWTTOKEN}" \
               -d ${env.QUERY} \
               ${env.GRAPHQLEndpoint}
