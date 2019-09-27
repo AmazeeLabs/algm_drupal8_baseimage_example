@@ -30,7 +30,7 @@ pipeline {
     }
     stage ('Lagoon deployment') {
       steps {
-        withCredentials([string(credentialsId: 'JWTTOKEN', token: 'JWTTOKEN')]) {
+        withCredentials([string(credentialsId: 'JWTTOKEN', variable: 'JWTTOKEN')]) {
           sh """
             echo ${env.QUERY} | curl \
               -X POST \
