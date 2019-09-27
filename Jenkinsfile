@@ -34,10 +34,10 @@ pipeline {
           sh """
             curl \
               -X POST \
-              ${env.GRAPHQLEndpoint} \
               -H "Content-Type:application/json" \
               -H "Authorization: Bearer ${JWTTOKEN}" \
-              -d ${env.QUERY}
+              -d ${env.QUERY} \
+              ${env.GRAPHQLEndpoint}
           """
         }
       }
