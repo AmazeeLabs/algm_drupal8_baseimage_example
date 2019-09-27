@@ -4,7 +4,7 @@ pipeline {
     JWTSSHPort = 32222
     JWTSSHHost = 'ssh.lagoon.amazeeio.cloud'
     GRAPHQLEndpoint = 'https://api.lagoon.amazeeio.cloud/graphql'
-    QUERY = '{ \"query\": \"mutation { deployEnvironmentLatest(input: { environment: { name: \\"master\\" project: { name: \\"umami-demo\\" } } }) }\" }'
+    QUERY = '{ "query": "mutation { deployEnvironmentLatest(input: { environment: { name: \\"master\\" project: { name: \\"umami-demo\\" } } }) }" }'
   }
 
   options {
@@ -31,14 +31,7 @@ pipeline {
     stage ('Lagoon deployment') {
       steps {
         withCredentials([string(credentialsId: 'JWTTOKEN', variable: 'JWTTOKEN')]) {
-          sh """
-            curl \
-              -X POST \
-              -H 'Content-Type:application/json' \
-              -H "Authorization: Bearer ${JWTTOKEN}" \
-              -d ${env.QUERY} \
-              ${env.GRAPHQLEndpoint}
-          """
+          sh "curl -X POST -H \"Content-Type:application/json\" -H \"Authorization: Bearer ${JWTTOKEN}\" -d ${env.QUERY} ${env.GRAPHQLEndpoint}"
         }
       }
     }
