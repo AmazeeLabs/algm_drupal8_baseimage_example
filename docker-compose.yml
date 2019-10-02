@@ -8,7 +8,8 @@ x-volumes:
   &default-volumes
     # Define all volumes you would like to have real-time mounted into the docker containers
     volumes:
-      - ${PWD}/:/app/depimages/local/
+      - ${PWD}/composer.json:/app/composer.json
+      - ${PWD}/composer.lock:/app/composer.lock
       - ${PWD}/modules:/app/web/modules/custom/:delegated
       - ${PWD}/themes/:/app/web/themes/custom:delegated
 
