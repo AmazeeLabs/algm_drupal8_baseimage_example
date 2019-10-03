@@ -25,14 +25,14 @@
         ]
     },
     "require": {
+	    "amazeelabs/algm_drupal8_baseimage": "^0.0.6"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
         "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
         "pre-install-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion",
-	    "exit; ls;"
+            "composer update --no-scripts --with-dependencies amazeelabs/algm_drupal8_baseimage"
         ],
         "pre-update-cmd": [
             "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
