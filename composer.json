@@ -31,7 +31,10 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
-        "pre-command-run": [
+        "pre-install-cmd": [
+            "composer update --no-scripts --with-dependencies amazeelabs/algm_drupal8_baseimage"
+        ],
+        "pre-update-cmd": [
             "composer update --no-scripts --with-dependencies amazeelabs/algm_drupal8_baseimage"
         ],
         "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
