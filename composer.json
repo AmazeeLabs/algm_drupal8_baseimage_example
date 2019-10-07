@@ -25,15 +25,16 @@
         ]
     },
     "require": {
-	    "amazeelabs/algm_drupal8_baseimage": "^0.0.6"
+	    "amazeelabs/algm_drupal8_baseimage": "^0.0.6",
+        "drupal/lagoon_logs": "^1.0"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
-        "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
-        "pre-install-cmd": [
+        "pre-command-run": [
             "composer update --no-scripts --with-dependencies amazeelabs/algm_drupal8_baseimage"
         ],
+        "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
         "pre-update-cmd": [
             "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
         ],
