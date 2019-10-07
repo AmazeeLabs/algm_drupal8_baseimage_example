@@ -31,14 +31,12 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
+        "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
         "pre-install-cmd": [
             "composer update --no-scripts --with-dependencies amazeelabs/algm_drupal8_baseimage"
         ],
         "pre-update-cmd": [
-            "composer update --no-scripts --with-dependencies amazeelabs/algm_drupal8_baseimage"
-        ],
-        "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
-        "pre-update-cmd": [
+            "composer update --no-scripts --with-dependencies amazeelabs/algm_drupal8_baseimage",
             "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
         ],
         "post-install-cmd": [
