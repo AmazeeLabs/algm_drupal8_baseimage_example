@@ -1,6 +1,6 @@
 {
     "name": "amazeelabs/algm_drupal8_baseimage_example",
-    "description": "Example of Drupal-Example as Multisite",
+    "description": "Example of Drupal-Example as Multisite with minimal fuss",
     "type": "project",
     "license": "GPL-2.0+",
     "authors": [
@@ -13,6 +13,10 @@
         {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/AmazeeLabs/algm_drupal8_baseimage.git"
         }
     ],
     "autoload": {
@@ -21,16 +25,18 @@
         ]
     },
     "require": {
-        "wikimedia/composer-merge-plugin": "^1.4"
+	    "amazeelabs/algm_drupal8_baseimage": "^0.0.6",
+        "drupal/lagoon_logs": "^1.0"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
         "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
         "pre-install-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
+            "composer update --no-scripts --with-dependencies amazeelabs/algm_drupal8_baseimage"
         ],
         "pre-update-cmd": [
+            "composer update --no-scripts --with-dependencies amazeelabs/algm_drupal8_baseimage",
             "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
         ],
         "post-install-cmd": [
@@ -41,18 +47,6 @@
         ]
     },
     "extra": {
-        "merge-plugin": {
-            "include": [
-                "composer.base.json"
-            ],
-            "recurse": false,
-            "replace": true,
-            "ignore-duplicates": false,
-            "merge-dev": false,
-            "merge-extra": false,
-            "merge-extra-deep": false,
-            "merge-scripts": false
-        },
         "installer-paths": {
             "web/core": ["type:drupal-core"],
             "web/libraries/{$name}": ["type:drupal-library"],
