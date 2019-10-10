@@ -32,10 +32,10 @@
     "scripts": {
         "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
         "pre-install-cmd": [
-            "composer update --no-scripts --with-dependencies amazeelabs/algm_drupal8_baseimage"
+            "./build/pre_composer"
         ],
         "pre-update-cmd": [
-            "composer update --no-scripts --with-dependencies amazeelabs/algm_drupal8_baseimage",
+            "./build/pre_composer",
             "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
         ],
         "post-install-cmd": [
