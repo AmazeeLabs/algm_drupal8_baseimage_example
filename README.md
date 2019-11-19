@@ -1,10 +1,9 @@
-# Composer template for Drupal projects hosted on amazee.io
+# Template for Drupal projects hosted on amazee.io
 
-Test push !
-This project template should provide a kickstart for managing your site
-dependencies with [Composer](https://getcomposer.org/). It is based on the [original Drupal Composer Template](https://github.com/drupal-composer/drupal-project), but includes everything necessary to run on amazee.io (either the local development environment or on amazee.io servers.)
+This project template should provide a kickstart for managing your site dependencies with [Composer](https://getcomposer.org/). It is based on the [original Drupal Composer Template](https://github.com/drupal-composer/drupal-project), but includes everything necessary to run on amazee.io (either the local development environment or on amazee.io servers.)
 
-test
+Furthermore, it is built on top of a Drupal base image which means that your Drupal Core version will be automatically managed by the upstream repository which is checked for version updates every time your site is deployed, when you add or update packages using composer.
+
 
 ## Requirements
 
@@ -28,7 +27,7 @@ docker-compose up -d
 docker-compose exec cli composer install
 ```
 
-4. Visit the new site @ `http://drupal-example.docker.amazee.io`
+4. Visit the new site @ `http://drupal-example-multisite1.docker.amazee.io`
 
 * If any steps fail you're safe to rerun from any point,
 starting again from the beginning will just reconfirm the changes.
@@ -47,29 +46,22 @@ When installing the given `composer.json` some tasks are taken care of:
 * Latest version of drush is installed locally for use at `vendor/bin/drush`.
 * Latest version of [Drupal Console](http://www.drupalconsole.com) is installed locally for use at `vendor/bin/drupal`.
 
+## Where do I place my custom settings, modules, themes, etc.
+
+This template aims to check into SVC _only_ those _custom_ files required by your project. As such you'll note that there are only a few directories available in your local development directory.
+These are then mapped into the appropriate directories inside the container.
+
+* `/modules` is mapped to `/App/web/modules/custom`
+* `/themes` is mapped to `/App/web/themes/custom`
+* `/sites/default` is mapped to `/App/web/sites/default`
+* `/config` is mapped to `/App/config/sync`
+
+
 ## Updating Drupal Core
 
-This project will attempt to keep all of your Drupal Core files up-to-date; the
-project [drupal-composer/drupal-scaffold](https://github.com/drupal-composer/drupal-scaffold)
-is used to ensure that your scaffold files are updated every time drupal/core is
-updated. If you customize any of the "scaffolding" files (commonly .htaccess),
-you may need to merge conflicts if any of your modified files are updated in a
-new release of Drupal core.
+Drupal core updates are taken care of by the upstream project.
+There should be no reason to update core manually.
 
-Follow the steps below to update your core files.
-
-1. Run `composer update drupal/core --with-dependencies` to update Drupal Core and its dependencies.
-1. Run `git diff` to determine if any of the scaffolding files have changed.
-   Review the files for any changes and restore any customizations to
-  `.htaccess` or `robots.txt`.
-1. Commit everything all together in a single commit, so `web` will remain in
-   sync with the `core` when checking out branches or running `git bisect`.
-1. In the event that there are non-trivial conflicts in step 2, you may wish
-   to perform these steps on a separate branch, and use `git merge` to combine the
-   updated core files with your customized files. This facilitates the use
-   of a [three-way merge tool such as kdiff3](http://www.gitshah.com/2010/12/how-to-setup-kdiff-as-diff-tool-for-git.html). This setup is not necessary if your changes are simple;
-   keeping all of your modifications at the beginning or end of the file is a
-   good strategy to keep merges easy.
 
 ## FAQ
 
