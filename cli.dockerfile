@@ -1,8 +1,7 @@
 FROM algmprivsecops/drupal8 
 
 COPY composer.json composer.lock /app/
-RUN composer update --with-dependencies amazeelabs/algm_drupal8_baseimage
-RUN composer install --no-dev
+RUN COMPOSER_MEMORY_LIMIT=-1 composer install --no-dev
 COPY ./modules /app/web/modules/custom
 COPY ./themes/ /app/web/themes/custom
 
