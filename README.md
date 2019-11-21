@@ -30,6 +30,31 @@ docker-compose exec cli composer install
 4. Visit the new site @ `http://drupal-example-multisite1.docker.amazee.io`
 
 
+
+## Working with the local environment
+
+As described below, you do not check in the entire Drupal installation under version control.
+Practically this means that most tasks for local development will be done inside the containers (for instance, running composer and drush commands).
+
+Once your project is installed, run `docker-compose exec cli bash` in order to get a shell into the container.
+
+## Where do I place my custom settings, modules, themes, etc.
+
+This template aims to check into VCS _only_ those _custom_ files required by your project. As such you'll note that there are only a few directories available in your local development directory.
+These are then mapped into the appropriate directories inside the container.
+
+* `/modules` is mapped to `/App/web/modules/custom`
+* `/themes` is mapped to `/App/web/themes/custom`
+* `/sites/default` is mapped to `/App/web/sites/default`
+* `/config` is mapped to `/App/config/sync`
+
+
+## Updating Drupal Core
+
+Drupal core updates are taken care of by the upstream project.
+There should be no reason to update core manually.
+
+
 ## What does the template do?
 
 When installing the given `composer.json` some tasks are taken care of:
@@ -44,21 +69,6 @@ When installing the given `composer.json` some tasks are taken care of:
 * Latest version of drush is installed locally for use at `vendor/bin/drush`.
 * Latest version of [Drupal Console](http://www.drupalconsole.com) is installed locally for use at `vendor/bin/drupal`.
 
-## Where do I place my custom settings, modules, themes, etc.
-
-This template aims to check into SVC _only_ those _custom_ files required by your project. As such you'll note that there are only a few directories available in your local development directory.
-These are then mapped into the appropriate directories inside the container.
-
-* `/modules` is mapped to `/App/web/modules/custom`
-* `/themes` is mapped to `/App/web/themes/custom`
-* `/sites/default` is mapped to `/App/web/sites/default`
-* `/config` is mapped to `/App/config/sync`
-
-
-## Updating Drupal Core
-
-Drupal core updates are taken care of by the upstream project.
-There should be no reason to update core manually.
 
 
 ## FAQ
