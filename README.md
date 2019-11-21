@@ -15,7 +15,7 @@ Furthermore, it is built on top of a Drupal base image which means that your Dru
 1. Checkout project repo and confirm the path is in docker's file sharing config - https://docs.docker.com/docker-for-mac/#file-sharing
 
 ```
-git clone https://github.com/amazeeio/drupal-example.git drupal8-lagoon && cd $_
+git clone https://github.com/AmazeeLabs/algm_drupal8_baseimage_example drupal8-lagoon && cd $_
 ```
 
 2. Make sure you don't have anything running on port 80 on the host machine (like a web server) then run `pygmy up`
@@ -29,8 +29,6 @@ docker-compose exec cli composer install
 
 4. Visit the new site @ `http://drupal-example-multisite1.docker.amazee.io`
 
-* If any steps fail you're safe to rerun from any point,
-starting again from the beginning will just reconfirm the changes.
 
 ## What does the template do?
 
@@ -69,28 +67,8 @@ There should be no reason to update core manually.
 
 Composer recommends **no**. They provide [argumentation against but also
 workarounds if a project decides to do it anyway](https://getcomposer.org/doc/faqs/should-i-commit-the-dependencies-in-my-vendor-directory.md).
+Furthermore, the mapping
 
-### Should I commit the scaffolding files?
-
-The [drupal-scaffold](https://github.com/drupal-composer/drupal-scaffold) plugin can download the scaffold files (like
-index.php, update.php, …) to the web/ directory of your project. If you have not customized those files you could choose
-to not check them into your version control system (e.g. git). If that is the case for your project it might be
-convenient to automatically run the drupal-scaffold plugin after every install or update of your project. You can
-achieve that by registering `@drupal-scaffold` as a post-install and post-update command in your composer.json:
-
-```json
-"scripts": {
-    "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
-    "post-install-cmd": [
-        "@drupal-scaffold",
-        "..."
-    ],
-    "post-update-cmd": [
-        "@drupal-scaffold",
-        "..."
-    ]
-},
-```
 ### How can I apply patches to downloaded modules?
 
 If you need to apply patches (depending on the project being modified, a pull
